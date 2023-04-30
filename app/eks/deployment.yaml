@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weshare-api-deployment
+  labels:
+    app: weshare-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weshare-api
+  template:
+    metadata:
+      labels:
+        app: weshare-api
+    spec:
+      containers:
+        - name: weshare-api
+          image: 023221543387.dkr.ecr.ap-southeast-1.amazonaws.com/weshare:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
